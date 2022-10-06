@@ -1,5 +1,5 @@
 
-use duobot::{game_rules::{DUOTRIGORDLE, TEST}, game_run::GameRun};
+use ordlebot::{game_rules::TEST, game_run::GameRun};
 
 fn main() {
     let target_words = TEST.get_targets_for_id(215);

@@ -1,7 +1,4 @@
-use std::fmt::Display;
-use std::io::Write;
-
-use comfy_table::presets::{UTF8_BORDERS_ONLY, ASCII_BORDERS_ONLY};
+use comfy_table::presets::UTF8_BORDERS_ONLY;
 use comfy_table::{Table, Row, Cell};
 
 use crate::game_rules::GameRules;
