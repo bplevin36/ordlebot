@@ -1,11 +1,13 @@
 
 use fxhash::{FxHashMap, FxBuildHasher, FxHashSet};
 use mersenne_twister_m::MT19937::MT19937;
+use roaring::RoaringBitmap;
 
 use crate::types::MatchMapping;
 use crate::utils::compute_match;
 
 pub const DUOTRIGORDLE: GameRules = include!("../data/duotrigordle.rs");
+pub const QUORDLE: GameRules = DUOTRIGORDLE.with_boards_and_guesses(4, 9);
 pub const DORDLE: GameRules = DUOTRIGORDLE.with_boards_and_guesses(2, 7);
 pub const WORDLE: GameRules = DUOTRIGORDLE.with_boards_and_guesses(1, 6);
 pub const TEST: GameRules = include!("../data/test.rs");
@@ -58,11 +60,11 @@ impl GameRules {
         let mut pattern_mapping = FxHashMap::with_capacity_and_hasher(self.words_valid.len(), FxBuildHasher::default());
         for &word in self.words_valid {
             let mut outcome_mapping = FxHashMap::with_hasher(FxBuildHasher::default());
-            for &target_word in self.words_target {
+            for (target_i, &target_word) in self.words_target.iter().enumerate() {
                 let response = compute_match(word, target_word);
                 outcome_mapping.entry(response)
-                    .or_insert_with(|| FxHashSet::with_hasher(FxBuildHasher::default()))
-                    .insert(target_word.to_owned());
+                    .or_insert_with(|| RoaringBitmap::new())
+                    .insert(target_i as u32);
             }
             pattern_mapping.insert(word.to_owned(), outcome_mapping);
         }
