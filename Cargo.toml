@@ -2,6 +2,11 @@
 name = "ordlebot"
 version = "0.1.0"
 edition = "2021"
+authors = ["Benjamin Levin <bplevin36@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/bplevin36/ordlebot"
+license = "MIT"
+categories = ["command-line-utilities", "games", "text-processing"]
 
 [dependencies]
 comfy-table = "6.1.0"
