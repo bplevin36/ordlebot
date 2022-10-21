@@ -1,5 +1,5 @@
 
-use fxhash::{FxHashMap, FxBuildHasher, FxHashSet};
+use fxhash::{FxHashMap, FxBuildHasher};
 use mersenne_twister_m::MT19937::MT19937;
 use roaring::RoaringBitmap;
 

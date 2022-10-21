@@ -1,5 +1,3 @@
-use std::ops::BitOrAssign;
-
 use comfy_table::presets::{UTF8_BORDERS_ONLY, UTF8_FULL};
 use comfy_table::{Table, Row, Cell};
 use fxhash::{FxHashMap, FxBuildHasher};
